@@ -1,19 +1,22 @@
-//import ApiServices from "@/services/api";
+import ApiServices from "@/services/api";
 
 const state = {
-  //   products: [],
+  products: [],
 };
 const getters = {
-  //   getProducts: (state) => state.products,
+  getProducts: (state) => state.products,
 };
 const mutations = {
-  //   setProducts(state, value) {
-  //     state.products = value;
-  // },
+  setProducts(state, value) {
+    state.products = value;
+  },
 };
 const actions = {
-  fetchProducts({ commit }) {
-    return "helloWorld";
+  async fetchProducts({ commit }) {
+    const response = await ApiServices.gettingProducts();
+    // console.log(response.products);
+    commit("setProducts", response.products);
+    return response;
   },
 };
 

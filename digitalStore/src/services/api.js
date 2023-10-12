@@ -5,7 +5,6 @@ const ApiServices = {
   async gettingProducts() {
     const response = await axios.get(`${BASE_URL}/products`);
     const data = await response.data;
-    console.log(data);
     return data;
   },
 };

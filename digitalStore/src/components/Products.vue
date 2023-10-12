@@ -5,12 +5,15 @@
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-  computed: {
-    // ...mapActions("product_module", ["fetchProducts"]),
-    ...mapActions(["fetchProducts"]),
+  async beforeMount() {
+    const response = await this.getProducts;
+    console.log(response);
   },
-  mounted() {
-    this.fetchProducts;
+  computed: {
+    ...mapGetters("product", ["getProducts"]),
+  },
+  methods: {
+    ...mapActions("product", ["fetchProducts"]),
   },
 };
 </script>
